@@ -10,4 +10,5 @@ import { Navbar } from "./components/navbar/navbar";
 })
 export class App {
   protected title = 'gerador-certificado';
+  exibeNavbar: boolean = true;
 }
