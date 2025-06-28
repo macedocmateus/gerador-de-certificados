@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { Navbar } from "./components/navbar/navbar";
 import { PrimaryButton } from "./components/primary-button/primary-button";
 import { SecondaryButton } from "./components/secondary-button/secondary-button";
+import { ItemCertificado } from "./components/item-certificado/item-certificado";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, PrimaryButton, SecondaryButton],
+  imports: [RouterOutlet, Navbar, PrimaryButton, SecondaryButton, ItemCertificado],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
