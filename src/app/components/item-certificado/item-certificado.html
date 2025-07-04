@@ -5,6 +5,8 @@
       </div>
       <small class=".small-date">Gerado em 21/04/2025</small>
     </div>
-    <app-secondary-button />
+
+    <!-- routerLink com colchetes é recomendado para rotas dinâmicas, ou seja, com uma variável, por outro lado, o sem colchetes é recomendado para rotas estáticas  -->
+    <app-secondary-button (click)="redirecionaCertificado()" />
   </div>
 </div>
