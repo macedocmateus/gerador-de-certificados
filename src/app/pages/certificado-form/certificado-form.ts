@@ -13,9 +13,18 @@ import { CommonModule } from '@angular/common';
 export class CertificadoForm {
   nome: string = '';
   atividade: string = '';
-  atividades: string[] = ['ola', 'bom dia', 'boa tarde', 'boa noite'];
+  atividades: string[] = [];
 
   campoInvalido(control: NgModel) {
     return control.invalid && control.touched
+  }
+
+  adicionarAtividade() {
+    this.atividades.push(this.atividade);
+    this.atividade = '';
+  }
+
+  excluirAtividade(index: number) {
+    this.atividades.splice(index, 1);
   }
 }

@@ -33,7 +33,8 @@
         }
 
       </div>
-      <app-secondary-button [ngStyle]=" campoInvalido(atividadeRef) ? {'margin-bottom': '24px'} : {}" />
+      <app-secondary-button (click)="adicionarAtividade()"
+        [ngStyle]=" campoInvalido(atividadeRef) ? {'margin-bottom': '24px'} : {}" />
     </div>
     <div class="atividade-group">
       <label class="form-label">Lista de atividades</label>
@@ -42,7 +43,7 @@
         @for (atividade of atividades; track $index) {
         <div class="item">
           <span class="item-text">{{atividade}}</span>
-          <div class="remove-btn">
+          <div (click)="excluirAtividade($index)" class="remove-btn">
             <i class="ph-bold ph-x"></i>
           </div>
         </div>
