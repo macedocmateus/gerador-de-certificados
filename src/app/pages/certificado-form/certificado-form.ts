@@ -27,4 +27,8 @@ export class CertificadoForm {
   excluirAtividade(index: number) {
     this.atividades.splice(index, 1);
   }
+
+  formValido() {
+    return this.atividades.length > 0 && this.nome.length > 0
+  }
 }
