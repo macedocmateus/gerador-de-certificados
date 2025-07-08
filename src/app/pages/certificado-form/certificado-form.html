@@ -8,7 +8,7 @@
     <h2 class="card-title">Novo certificado</h2>
     <div class="mb-3 custom-input-group">
       <label class="form-label" for="nome">Nome</label>
-      <input [(ngModel)]="nome" #nomeRef="ngModel" maxlength="150" required type="text" name="nome"
+      <input [(ngModel)]="certificado.nome" #nomeRef="ngModel" maxlength="150" required type="text" name="nome"
         class="form-control custom-input" placeholder="Nome do aluno" id="nome">
 
       @if (campoInvalido(nomeRef)) {
@@ -33,7 +33,7 @@
       <label class="form-label">Lista de atividades</label>
       <div class="item-list w-100">
 
-        @for (atividade of atividades; track $index) {
+        @for (atividade of certificado.atividades; track $index) {
         <div class="item">
           <span class="item-text">{{atividade}}</span>
           <div (click)="excluirAtividade($index)" class="remove-btn">
@@ -42,7 +42,7 @@
         </div>
 
         <!-- condicional para apagar o separador sempre no ultimo item -->
-        @if ($index + 1 != atividades.length ) {
+        @if ($index + 1 != certificado.atividades.length ) {
         <hr>
         }
         }
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <app-primary-button [disable]="!formValido()" textoBotao="Gerar certificado" />
+    <app-primary-button (click)="submit()" [disable]="!formValido()" textoBotao="Gerar certificado" />
 
   </div>
 </form>
