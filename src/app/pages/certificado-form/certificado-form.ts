@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PrimaryButton } from "../../components/primary-button/primary-button";
 import { SecondaryButton } from "../../components/secondary-button/secondary-button";
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Certificado } from '../../interface/certificado';
+import { ICertificado } from '../../interface/certificado';
 import { CertificadoService } from '../../services/certificado.service';
+import {v4 as uuidv4} from 'uuid'
 
 
 @Component({
@@ -17,8 +18,10 @@ import { CertificadoService } from '../../services/certificado.service';
 export class CertificadoForm {
   
   constructor(private certificadoService: CertificadoService) {}
+  @ViewChild('form') form!: NgForm
   
-  certificado: Certificado = {
+  certificado: ICertificado = {
+    id: '',
     nome: '',
     atividades: [],
     dataEmissao: ''
@@ -47,14 +50,21 @@ export class CertificadoForm {
       return
     }
     this.certificado.dataEmissao = this.dataAtual()
+    this.certificado.id = uuidv4()
     this.certificadoService.adicionarCertificado(this.certificado)
 
     // Limpa todos os campos de preenchimentos após o envio
-    this.certificado = {
+    this.certificado = this.limparForm()
+    this.form.resetForm()
+  }
+
+  limparForm(): ICertificado {
+    return {
+      id: '',
       nome: '',
       atividades: [],
       dataEmissao: ''
-    };
+    }
   }
 
   dataAtual() {
