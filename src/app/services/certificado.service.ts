@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+import { Certificado } from '../interface/certificado';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CertificadoService {
+
+  certificados: Certificado[] = []
+
+  constructor() { }
+
+  adicionarCertificado(certificado: Certificado) {
+    this.certificados.push(certificado)
+    console.log(this.certificados)
+  }
+}
