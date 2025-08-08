@@ -54,7 +54,7 @@ export class CertificadoForm {
     this.certificado.id = uuidv4()
     this.certificadoService.adicionarCertificado(this.certificado)
 
-    this.route.navigate(['certificados', this.certificado.id])
+    this.route.navigate(['certificado', this.certificado.id])
 
     // Limpa todos os campos de preenchimentos após o envio
     // this.certificado = this.limparForm()
