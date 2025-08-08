@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ICertificado } from '../../interface/certificado';
 import { CertificadoService } from '../../services/certificado.service';
 import {v4 as uuidv4} from 'uuid'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ import {v4 as uuidv4} from 'uuid'
 
 export class CertificadoForm {
   
-  constructor(private certificadoService: CertificadoService) {}
+  constructor(private certificadoService: CertificadoService, private route: Router) {}
   @ViewChild('form') form!: NgForm
   
   certificado: ICertificado = {
@@ -53,9 +54,11 @@ export class CertificadoForm {
     this.certificado.id = uuidv4()
     this.certificadoService.adicionarCertificado(this.certificado)
 
+    this.route.navigate(['certificados', this.certificado.id])
+
     // Limpa todos os campos de preenchimentos após o envio
-    this.certificado = this.limparForm()
-    this.form.resetForm()
+    // this.certificado = this.limparForm()
+    // this.form.resetForm()
   }
 
   limparForm(): ICertificado {

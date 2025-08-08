@@ -14,7 +14,7 @@ export const routes: Routes = [
     component: CertificadoForm
   },
   {
-    path: "certificado/:id",
+    path: "certificados/:id",
     component: Certificado
   }
 ];
